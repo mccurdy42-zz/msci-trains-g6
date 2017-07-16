@@ -1,0 +1,10 @@
+--this is to be paramaterized on the cid. Uploaded at 5:20 on sunday
+
+SELECT DISTINCT S.location, S.num_tracks
+FROM stations AS S, runs_through AS R, operating_comp AS C, food F
+WHERE "Metrolinx" = C.c_name AND
+      C.c_id = R.c_id AND
+      R.s_id = S.s_id AND
+      S.accessibility = 'No' AND
+      S.s_id NOT IN  ( SELECT F2.s_id
+                      FROM food AS F2);
