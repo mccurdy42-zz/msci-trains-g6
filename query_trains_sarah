@@ -1,0 +1,1 @@
+$sql = "SELECT t.t_id, t.cert_id, e.e_id FROM travels_on as trav, trains AS t, operating_comp AS c, employee AS e, conductor as cond WHERE (trav.proj_start < trav.act_start OR trav.proj_end < trav.act_start) AND trav.t_id = t.t_id AND t.c_id = c.c_id AND e.e_id = cond.e_id  AND c.c_id = ?;
