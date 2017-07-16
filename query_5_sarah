@@ -1,0 +1,12 @@
+--this is uploaded at 5:00 pm for query 5. This works on the phpmyadmin. Also not every cid returns a result currently
+
+
+SELECT t.t_id, t.cert_id, e.e_id
+FROM travels_on as trav, trains AS t, operating_comp AS c, employee AS e, conductor as conduct
+WHERE (trav.proj_start < trav.act_start OR trav.proj_end < trav.act_start) AND
+      trav.t_id = t.t_id AND
+      t.c_id = c.c_id AND
+      c.c_id = e.c_id AND
+      e.e_id = conduct.e_id AND
+      t.cert_id <= conduct.cert_id AND
+      c.c_id = "4";
