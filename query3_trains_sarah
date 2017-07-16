@@ -1,0 +1,12 @@
+--This query is uploaded at 5:40 pm. This does not have any parametarization future at the momemt. This after making the website pretty. 
+--Buisness purpose of this query is to find approporate routes for travellers that want to travel on a specific manufacture, from 2 tourist cities, and arrive in Jasper before 11 pm.
+
+      SELECT trav.proj_start, trav.proj_end, r.name, r.start_city, r.end_city,
+      FROM travels_on AS trav JOIN routes AS r ON trav.r_id = r.r_id
+                       JOIN trains AS t ON trav.t_id = t.t_id
+                       JOIN model AS m on m.model_id = t.model_id
+                       JOIN manufacturer AS mfg on m.mfg_id = mfg.mfg_id
+      WHERE trav.proj_end < '23:00' AND
+            mfg.name = "Canadian Vickers" AND
+            r.start_city  = "Vancouver" AND
+            r.end_city = "Jasper";
